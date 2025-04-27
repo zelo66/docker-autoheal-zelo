@@ -91,7 +91,8 @@ notify_webhook() {
       -H "Title: Autoheal Notification" \
       -H "Priority: max" \
       -H "Tags: warning" \
-      -d "${text}" 2>&1
+      -d "${text}"             
+    #dla logow dodac    -d "${text}" 2>&1
   fi
 
   if [ -n "$WEBHOOK_URL" ]
