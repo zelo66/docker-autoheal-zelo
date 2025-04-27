@@ -91,6 +91,7 @@ notify_webhook() {
     curl -v -X POST "$NTFY_URL/$NTFY_TOPIC" \
       -H "Authorization: Bearer $NTFY_TOKEN" \
       -H "Content-Type: application/json" \
+      -H "Title: Autoheal Notification" \
       -d "$payload" 2>&1
 
   fi
@@ -140,8 +141,7 @@ generate_ntfy_payload() {
   local text="$@"
   cat <<EOF
 {
-  "title": "Autoheal Notification",
-  "message": "$text"
+  "message":"$text"
 }
 EOF
 }
