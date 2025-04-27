@@ -84,9 +84,6 @@ notify_webhook() {
 
   if [ -n "$NTFY_TOPIC" ] && [ -n "$NTFY_URL" ] && [ -n "$NTFY_TOKEN" ]
   then
-    # Generowanie payloadu JSON z tytułem i treścią
-    payload=$(generate_ntfy_payload "$text")
-
     # Wysyłanie powiadomienia do ntfy
     curl -v -X POST "$NTFY_URL/$NTFY_TOPIC" \
       -H "Authorization: Bearer $NTFY_TOKEN" \
@@ -94,8 +91,7 @@ notify_webhook() {
       -H "Title: Autoheal Notification" \
       -H "Priority: max" \
       -H "Tags: warning" \
-      -d "$payload" 2>&1
-
+      -d "${text}" 2>&1
   fi
 
   if [ -n "$WEBHOOK_URL" ]
@@ -135,15 +131,6 @@ generate_apprise_payload() {
 {
   "title":"Autoheal",
   "body":"$text"
-}
-EOF
-}
-
-generate_ntfy_payload() {
-  local text="$@"
-  cat <<EOF
-{
-  "message":"$text"
 }
 EOF
 }
