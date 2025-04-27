@@ -85,7 +85,7 @@ notify_webhook() {
   if [ -n "$NTFY_TOPIC" ] && [ -n "$NTFY_URL" ] && [ -n "$NTFY_TOKEN" ]
   then
     # Wysyłanie powiadomienia do ntfy
-    curl -v -X POST "$NTFY_URL/$NTFY_TOPIC" \
+    curl -s -X POST "$NTFY_URL/$NTFY_TOPIC" \
       -H "Authorization: Bearer $NTFY_TOKEN" \
       -H "Content-Type: text/markdown" \
       -H "Title: Autoheal Notification" \
