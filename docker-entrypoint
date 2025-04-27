@@ -12,7 +12,7 @@ WEBHOOK_JSON_KEY=${WEBHOOK_JSON_KEY:-"text"}
 APPRISE_URL=${APPRISE_URL:-""}
 NTFY_TOPIC=${NTFY_TOPIC:-""}
 NTFY_URL=${NTFY_URL:-""}
-NTFY_TOKEN${NTFY_TOKEN:-""}
+NTFY_TOKEN=${NTFY_TOKEN:-""}
 
 
 # only use unix domain socket if no TCP endpoint is defined
