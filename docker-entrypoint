@@ -88,10 +88,11 @@ notify_webhook() {
     payload=$(generate_ntfy_payload "$text")
 
     # Wysyłanie powiadomienia do ntfy z tokenem autoryzacji
-    curl -s -X POST "$NTFY_URL/$NTFY_TOPIC" \
+    curl -v -X POST "$NTFY_URL/$NTFY_TOPIC" \
       -H "Authorization: Bearer $NTFY_TOKEN" \
       -H "Content-Type: application/json" \
-      -d "$payload"
+      -d "$payload" 2>&1
+
   fi
 
   if [ -n "$WEBHOOK_URL" ]
